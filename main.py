@@ -86,9 +86,15 @@ def result():
     temp_label.grid(row=4, column=1)
     sp_label = Label(new_win, text=f"Your SpO2: {symptoms[3]}%", font=("Palatino Linotype", 15, "normal"), bg=BG_COLOR, fg="#005792")
     sp_label.grid(row=5, column=1)
+
     if float(temp) > 99 or float(sp) < 95 or bre or sore or chest or fever:
-        covid_label = Label(new_win, text="Warning! Your symptoms indicate danger of COVID-19. Please visit a doctor urgently!", font=("Palatino Linotype", 15, "bold"), bg=BG_COLOR, fg="red")
+        covid_label = Label(new_win, text="Warning! Your temperature and SPO2 indicate a danger of COVID-19. Please visit a doctor urgently!", font=("Palatino Linotype", 15, "bold"), bg=BG_COLOR, fg="red")
         covid_label.grid(row=7, column=1)
+    elif not belly or chest or head or gls or sore or fever or vomit or urn or bre or skin or brain:
+        diseases_label = Label(new_win,
+                               text="You are all fine! :)",
+                               font=("Palatino Linotype", 15, "bold"), bg=BG_COLOR, fg="#005792")
+        diseases_label.grid(row=6, column=1)
     if chest and bre:
         diseases_label = Label(new_win, text="Your symptoms point to: Asthma, Bronchitis or Laryngitis", font=("Palatino Linotype", 15, "bold"), bg=BG_COLOR, fg="#005792")
         diseases_label.grid(row=6, column=1)
@@ -119,6 +125,7 @@ def result():
                                text="Your symptoms point to: Chicken Pox or Small Pox",
                                font=("Palatino Linotype", 15, "bold"), bg=BG_COLOR, fg="#005792")
         diseases_label.grid(row=6, column=1)
+
 
 def next_win(win, i, en):
     global symptoms
